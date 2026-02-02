@@ -1,42 +1,39 @@
-"""
-Exercise 2.1: String Processing (Email Split)
-This script demonstrates how to split an email address into a username and a domain
-using Python's string manipulation methods.
-"""
+import re
 
 def process_email(email):
     """
-    Parses an email address to extract the username and domain.
+    Parses an email address to extract the username and domain using RegEx.
 
     Args:
-        email (str): The email address string (e.g., "user@example.com").
+        email (str): The email address string.
 
     Returns:
-        tuple: A tuple containing (username, domain).
-               Returns (None, None) if the email format is invalid.
+        tuple: (username, domain) if valid, otherwise (None, None).
     """
-    # Check if '@' is in the email string
-    if "@" not in email:
-        return None, None
+    # Pattern explanation:
+    # ^         Start of string
+    # ([\w\.-]+) Group 1: Username (alphanumeric, dots, hyphens)
+    # @         Literal '@' symbol
+    # ([\w\.-]+) Group 2: Domain (alphanumeric, dots, hyphens)
+    # $         End of string
+    pattern = r"^([\w\.-]+)@([\w\.-]+)$"
     
-    # Split the email string at the first occurrence of '@'
-    # The maxsplit=1 ensures we only split once even if there are unusual characters,
-    # though standard emails strictly have one '@'.
-    parts = email.split("@", 1)
+    match = re.match(pattern, email)
     
-    if len(parts) == 2:
-        return parts[0], parts[1]
+    if match:
+        return match.group(1), match.group(2)
     return None, None
 
 def main():
-    print("--- Exercise 2.1: Email Processing ---\n")
+    print("--- Exercise 2.1: Email Processing (with RegEx) ---\n")
     
     # Test cases
     emails = [
         "john.doe@gmail.com",
         "support@python.org",
         "invalid-email",
-        "admin@company.co.uk"
+        "admin@company.co.uk",
+        "bad@domain@com" # invalid format
     ]
     
     for email in emails:

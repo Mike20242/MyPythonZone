@@ -38,5 +38,19 @@ def main():
     print(f"Long Uppercase words (Map + Filter): {long_uppercase}")
     print("-" * 30)
 
+    # 3. Working with RegEx (New)
+    import re
+    mixed_strings = ["apple", "banana", "cherry123", "date_4", "5gold", "fig"]
+    print(f"Mixed strings: {mixed_strings}")
+
+    # FILTER: Strings containing digits
+    strings_with_digits = [s for s in mixed_strings if re.search(r"\d", s)]
+    print(f"Strings with digits (RegEx Filter): {strings_with_digits}")
+    
+    # FILTER: Strings starting with 'b' or 'c'
+    starts_with_bc = [s for s in mixed_strings if re.match(r"[bc]", s)]
+    print(f"Starts with 'b' or 'c' (RegEx Filter): {starts_with_bc}")
+    print("-" * 30)
+
 if __name__ == "__main__":
     main()

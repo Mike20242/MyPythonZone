@@ -5,6 +5,7 @@ Features: Add, Remove, Search, List contacts.
 """
 import json
 import os
+import re
 
 CONTACTS_FILE = "contacts.json"
 
@@ -33,9 +34,28 @@ class ContactManager:
         except IOError:
             print("Error saving contacts.")
 
+    def validate_email(self, email):
+        """Validates email format using RegEx."""
+        pattern = r"^[\w\.-]+@[\w\.-]+\.\w+$"
+        return bool(re.match(pattern, email))
+
+    def validate_phone(self, phone):
+        """Validates that phone contains only digits and is 10-12 chars long."""
+        pattern = r"^\d{10,12}$"
+        return bool(re.match(pattern, phone))
+
     def add_contact(self, name, phone, email):
-        """Adds a new contact."""
-        # Simple validation
+        """Adds a new contact with validation."""
+        # Validation
+        if not self.validate_email(email):
+            print(f"Error: Invalid email format -> {email}")
+            return False
+            
+        if not self.validate_phone(phone):
+            print(f"Error: Invalid phone number (must be 10-12 digits) -> {phone}")
+            return False
+
+        # Check for duplicates
         for contact in self.contacts:
             if contact['name'].lower() == name.lower():
                 print(f"Contact '{name}' already exists.")
@@ -130,21 +150,27 @@ def test_run():
         
     manager = ContactManager(test_file)
     
-    print("\n1. Adding contacts...")
+    print("\n1. Adding contacts (Valid)...")
     manager.add_contact("John Doe", "1234567890", "john@example.com")
     manager.add_contact("Jane Smith", "0987654321", "jane@example.com")
     
-    print("\n2. Listing contacts...")
+    print("\n2. Adding contacts (Invalid)...")
+    print("  a) Invalid Email:")
+    manager.add_contact("Invalid Email", "1112223333", "john.doe") # Missing @ and domain
+    print("  b) Invalid Phone:")
+    manager.add_contact("Invalid Phone", "123", "valid@email.com") # Too short
+
+    print("\n3. Listing contacts...")
     manager.list_contacts()
     
-    print("\n3. Searching for 'John Doe'...")
+    print("\n4. Searching for 'John Doe'...")
     c = manager.search_contact("John Doe")
     print(f"Result: {c}")
     
-    print("\n4. Removing 'John Doe'...")
+    print("\n5. Removing 'John Doe'...")
     manager.remove_contact("John Doe")
     
-    print("\n5. Listing contacts after removal...")
+    print("\n6. Listing contacts after removal...")
     manager.list_contacts()
     
     # Cleanup test file
