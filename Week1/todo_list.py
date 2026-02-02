@@ -19,7 +19,6 @@ def remove_task(tasks):
     show_tasks(tasks)
     if not tasks:
         return
-    
     try:
         task_num = int(input("Enter number of task to remove: "))
         if 1 <= task_num <= len(tasks):
