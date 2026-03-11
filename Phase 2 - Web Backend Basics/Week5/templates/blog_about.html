@@ -1,0 +1,24 @@
+{% extends "blog_base.html" %}
+
+{% block title %}DevBlog - About{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 750px; margin: auto; padding: 3rem;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem;">About <span class="text-primary">DevBlog</span></h1>
+    <p style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 1.5rem;">
+        Welcome to DevBlog! This is a personal blog mini-project built with Python and Flask.
+    </p>
+    <p style="font-size: 1.1rem; color: #cbd5e1;">
+        Our goal is to demonstrate how to create beautiful, dynamic web applications with minimal effort using modern design principles. This project leverages an aesthetic dark mode layout styled completely with Vanilla CSS.
+    </p>
+    
+    <div style="margin-top: 3rem; background: rgba(0,0,0,0.2); padding: 2rem; border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="margin-top: 0;">Technologies Used</h3>
+        <ul style="line-height: 2; margin-bottom: 0;">
+            <li><strong>Backend:</strong> Python & Flask</li>
+            <li><strong>Frontend:</strong> HTML5, Vanilla CSS, Jinja2 Templates</li>
+            <li><strong>Design System:</strong> Custom dark theme with glassmorphism and smooth micro-animations.</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

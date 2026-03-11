@@ -1,0 +1,12 @@
+{% extends "blog_base.html" %}
+
+{% block title %}DevBlog - 404 Not Found{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 5rem 0;">
+    <h1 style="font-size: 6rem; background: linear-gradient(135deg, var(--primary), #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; line-height: 1;">404</h1>
+    <h2 style="font-size: 2rem; margin-top: 1rem;">Page Not Found</h2>
+    <p class="text-muted" style="margin-bottom: 2.5rem; font-size: 1.1rem;">The blog post or page you're looking for doesn't exist.</p>
+    <a href="{{ url_for('home') }}" class="btn" style="padding: 1rem 2.5rem;">Return Home</a>
+</div>
+{% endblock %}

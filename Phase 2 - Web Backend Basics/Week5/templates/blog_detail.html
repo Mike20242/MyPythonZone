@@ -1,0 +1,25 @@
+{% extends "blog_base.html" %}
+
+{% block title %}DevBlog - {{ post.title }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: auto;">
+    <a href="{{ url_for('blog_list') }}" style="color: var(--text-muted); text-decoration: none; transition: color 0.2s; display: inline-block; margin-bottom: 1rem;" onmouseover="this.style.color='var(--text-main)'" onmouseout="this.style.color='var(--text-muted)'">
+        &larr; Back to all posts
+    </a>
+    
+    <div class="card" style="padding: 3rem;">
+        <div style="margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border);">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2;">{{ post.title }}</h1>
+            <p class="text-muted" style="font-size: 1.1rem; margin: 0;">
+                {{ post.date }} &bull; Written by <span class="text-primary" style="font-weight: 600;">{{ post.author }}</span>
+            </p>
+        </div>
+
+        <div style="font-size: 1.15rem; line-height: 1.9; color: #e2e8f0;">
+            <!-- Display raw HTML from the database -->
+            {{ post.content | safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}
