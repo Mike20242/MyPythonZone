@@ -4,4 +4,4 @@ This repository contained all Python codes I've coded through out 17 weeks.
 - Week 3: Finished
 - Week 4: Finished
 - Week 5: Finished
-- Week 6: Currently in progress
+- Week 6: Finished
