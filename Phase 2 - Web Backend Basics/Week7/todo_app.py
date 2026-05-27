@@ -1,13 +1,13 @@
 from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 import os
+import hashlib
 
 # =====================================================================
-# MINI PROJECT: TODO APP BACKEND WITH DATABASE
+# MINI PROJECT: TODO APP BACKEND WITH DATABASE (INTERACTIVE CLI)
 # =====================================================================
 
 # 1. Database Setup
-# Using SQLite for a simple, file-based database.
 db_path = 'todo_app.db'
 engine = create_engine(f'sqlite:///{db_path}', echo=False)
 
@@ -24,16 +24,12 @@ class User(Base):
     """
     __tablename__ = 'users'
 
-    # Primary key
     id = Column(Integer, primary_key=True)
-    
-    # User details
     username = Column(String(50), nullable=False, unique=True)
     email = Column(String(100), nullable=False, unique=True)
-    password = Column(String(255), nullable=False) # In a real app, this MUST be hashed!
+    password = Column(String(255), nullable=False) # Hashed password for security
 
-    # One-to-Many relationship with Todo
-    # A user can have many todos. If the user is deleted, their todos are deleted too (cascade='all, delete-orphan')
+    # One-to-Many relationship with Todo (Cascade delete enabled)
     todos = relationship('Todo', back_populates='owner', cascade='all, delete-orphan')
 
     def __repr__(self):
@@ -46,10 +42,7 @@ class Todo(Base):
     """
     __tablename__ = 'todos'
 
-    # Primary key
     id = Column(Integer, primary_key=True)
-    
-    # Task details
     title = Column(String(100), nullable=False)
     description = Column(String(500), default="")
     completed = Column(Boolean, default=False)
@@ -73,21 +66,52 @@ Session = sessionmaker(bind=engine)
 
 
 # =====================================================================
-# 3. APPLICATION LOGIC / CRUD FUNCTIONS
+# 3. SECURITY UTILS
 # =====================================================================
 
-def create_user(username, email, password):
-    """Creates a new user and saves it to the database."""
+def hash_password(password):
+    """Hashes a password for secure storage."""
+    return hashlib.sha256(password.encode()).hexdigest()
+
+
+# =====================================================================
+# 4. APPLICATION LOGIC / CRUD FUNCTIONS
+# =====================================================================
+
+def register_user(username, email, password):
+    """Creates a new user and saves it to the database with a hashed password."""
     session = Session()
     try:
-        new_user = User(username=username, email=email, password=password)
+        # Check if username or email already exists
+        if session.query(User).filter_by(username=username).first():
+            print("[!] Username already exists.")
+            return None
+        if session.query(User).filter_by(email=email).first():
+            print("[!] Email already registered.")
+            return None
+            
+        hashed_pw = hash_password(password)
+        new_user = User(username=username, email=email, password=hashed_pw)
         session.add(new_user)
         session.commit()
-        print(f"[*] User '{username}' created successfully.")
+        print(f"[*] User '{username}' registered successfully!")
         return new_user.id
     except Exception as e:
         session.rollback()
-        print(f"[!] Error creating user: {e}")
+        print(f"[!] Registration error: {e}")
+    finally:
+        session.close()
+
+def authenticate_user(username, password):
+    """Validates user credentials and returns the user ID if successful."""
+    session = Session()
+    try:
+        user = session.query(User).filter_by(username=username).first()
+        if user and user.password == hash_password(password):
+            print(f"[*] Login successful. Welcome back, {username}!")
+            return user.id
+        print("[!] Invalid username or password.")
+        return None
     finally:
         session.close()
 
@@ -98,49 +122,63 @@ def create_todo(user_id, title, description=""):
         new_todo = Todo(title=title, description=description, user_id=user_id)
         session.add(new_todo)
         session.commit()
-        print(f"[*] Todo '{title}' added for user ID {user_id}.")
-        return new_todo.id
+        print(f"[*] Todo '{title}' created successfully.")
     except Exception as e:
         session.rollback()
         print(f"[!] Error creating todo: {e}")
     finally:
         session.close()
 
-def get_user_todos(user_id):
+def list_todos(user_id):
     """Retrieves all todos for a specific user, ordering by completion status."""
     session = Session()
     try:
-        # We query Todos, filter by the correct user_id, 
-        # and order so that pending tasks show up before completed tasks.
+        # Order so that pending tasks show up before completed tasks.
         todos = session.query(Todo).filter_by(user_id=user_id).order_by(Todo.completed).all()
-        
-        user = session.query(User).get(user_id)
-        if user:
-            print(f"\n--- Todos for {user.username} ---")
-            if not todos:
-                print("  No todos yet.")
-            for t in todos:
-                status = "[x]" if t.completed else "[ ]"
-                print(f"  {status} {t.id}: {t.title} - {t.description}")
-            print("---------------------------\n")
-        return todos
+        if not todos:
+            print("\n--- You have no todos yet! ---")
+            return
+            
+        print("\n--- Your Todos ---")
+        for t in todos:
+            status = "[x]" if t.completed else "[ ]"
+            desc = f" - {t.description}" if t.description else ""
+            print(f"ID {t.id}: {status} {t.title}{desc}")
+        print("------------------\n")
     finally:
         session.close()
 
-def mark_todo_complete(todo_id):
-    """Updates a todo item's status to completed."""
+def mark_todo_complete(user_id, todo_id):
+    """Updates a todo item's status to completed (verifying ownership)."""
     session = Session()
     try:
-        todo = session.query(Todo).get(todo_id)
+        todo = session.query(Todo).filter_by(id=todo_id, user_id=user_id).first()
         if todo:
             todo.completed = True
             session.commit()
-            print(f"[*] Marked todo {todo_id} as complete.")
+            print(f"[*] Todo '{todo.title}' marked as complete.")
         else:
-            print(f"[!] Todo {todo_id} not found.")
+            print(f"[!] Todo ID {todo_id} not found or you don't have permission.")
     except Exception as e:
         session.rollback()
         print(f"[!] Error updating todo: {e}")
+    finally:
+        session.close()
+
+def delete_todo(user_id, todo_id):
+    """Deletes a specific todo item (verifying ownership)."""
+    session = Session()
+    try:
+        todo = session.query(Todo).filter_by(id=todo_id, user_id=user_id).first()
+        if todo:
+            session.delete(todo)
+            session.commit()
+            print(f"[*] Todo '{todo.title}' deleted.")
+        else:
+            print(f"[!] Todo ID {todo_id} not found or you don't have permission.")
+    except Exception as e:
+        session.rollback()
+        print(f"[!] Error deleting todo: {e}")
     finally:
         session.close()
 
@@ -150,62 +188,97 @@ def delete_user(user_id):
     try:
         user = session.query(User).get(user_id)
         if user:
-            username = user.username
             session.delete(user)
             session.commit()
-            print(f"[*] User '{username}' and all their todos were deleted.")
-        else:
-            print(f"[!] User {user_id} not found.")
+            print(f"[*] Account and all associated todos deleted.")
     except Exception as e:
         session.rollback()
-        print(f"[!] Error deleting user: {e}")
+        print(f"[!] Error deleting account: {e}")
     finally:
         session.close()
 
 
 # =====================================================================
-# 4. DEMONSTRATION SCRIPT
+# 5. INTERACTIVE CLI MENU
 # =====================================================================
 
-def run_demo():
-    print("=== TODO APP DEMO START ===")
-    
-    # 1. Create a user
-    user_id = create_user("giabao", "giabao@example.com", "securepassword123")
-    
-    if user_id:
-        # 2. Add some todos for the user
-        todo1_id = create_todo(user_id, "Learn SQLAlchemy", "Understand ORM concepts and relationships.")
-        todo2_id = create_todo(user_id, "Do Exercise 7.4", "Implement cascade delete.")
-        todo3_id = create_todo(user_id, "Buy groceries", "Milk, eggs, bread")
-
-        # 3. View the todos (Read)
-        get_user_todos(user_id)
-
-        # 4. Complete a task (Update)
-        mark_todo_complete(todo1_id)
+def todo_menu(user_id):
+    while True:
+        print("\n=== TODO MENU ===")
+        print("1. View my Todos")
+        print("2. Add a Todo")
+        print("3. Mark Todo as Complete")
+        print("4. Delete a Todo")
+        print("5. Delete my Account")
+        print("6. Logout")
         
-        # View again to see the updated status
-        get_user_todos(user_id)
-
-        # 5. Delete the user (Delete with Cascade)
-        # Deleting the user will automatically delete all their todos 
-        # because of cascade='all, delete-orphan' in the User model.
-        delete_user(user_id)
+        choice = input("Select an option (1-6): ").strip()
         
-        # Verify deletion
-        print("\nChecking if any todos remain in database for this user...")
-        session = Session()
-        remaining_todos = session.query(Todo).filter_by(user_id=user_id).all()
-        print(f"Remaining todos count: {len(remaining_todos)}")
-        session.close()
+        if choice == '1':
+            list_todos(user_id)
+        elif choice == '2':
+            title = input("Enter todo title: ").strip()
+            if title:
+                desc = input("Enter description (optional): ").strip()
+                create_todo(user_id, title, desc)
+            else:
+                print("[!] Title cannot be empty.")
+        elif choice == '3':
+            try:
+                todo_id = int(input("Enter Todo ID to complete: ").strip())
+                mark_todo_complete(user_id, todo_id)
+            except ValueError:
+                print("[!] Please enter a valid number.")
+        elif choice == '4':
+            try:
+                todo_id = int(input("Enter Todo ID to delete: ").strip())
+                delete_todo(user_id, todo_id)
+            except ValueError:
+                print("[!] Please enter a valid number.")
+        elif choice == '5':
+            confirm = input("Are you sure? This will delete all your todos! (y/n): ").strip().lower()
+            if confirm == 'y':
+                delete_user(user_id)
+                break
+        elif choice == '6':
+            print("Logging out...")
+            break
+        else:
+            print("[!] Invalid option. Try again.")
 
-    print("=== TODO APP DEMO END ===")
-
+def main_menu():
+    print("Welcome to the Mini Project Todo App!")
+    while True:
+        print("\n=== START MENU ===")
+        print("1. Login")
+        print("2. Register")
+        print("3. Exit")
+        
+        choice = input("Select an option (1-3): ").strip()
+        
+        if choice == '1':
+            print("\n-- Login --")
+            username = input("Username: ").strip()
+            password = input("Password: ").strip()
+            user_id = authenticate_user(username, password)
+            if user_id:
+                todo_menu(user_id)
+                
+        elif choice == '2':
+            print("\n-- Register --")
+            username = input("Username: ").strip()
+            email = input("Email: ").strip()
+            password = input("Password: ").strip()
+            if username and email and password:
+                register_user(username, email, password)
+            else:
+                print("[!] All fields are required.")
+                
+        elif choice == '3':
+            print("Goodbye!")
+            break
+        else:
+            print("[!] Invalid option. Try again.")
 
 if __name__ == "__main__":
-    # Remove existing db to start fresh for the demo
-    if os.path.exists(db_path):
-        os.remove(db_path)
-    
-    run_demo()
+    main_menu()
