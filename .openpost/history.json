@@ -1,0 +1,968 @@
+[
+  {
+    "id": "1780624381393",
+    "timestamp": 1780624381393,
+    "request": {
+      "id": "1780624381344",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 405,
+      "statusText": "METHOD NOT ALLOWED",
+      "headers": {
+        "allow": "POST, OPTIONS",
+        "connection": "close",
+        "content-length": "153",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:53:01 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>405 Method Not Allowed</title>\n<h1>Method Not Allowed</h1>\n<p>The method is not allowed for the requested URL.</p>\n",
+      "time": 44,
+      "size": 153,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624534726",
+    "timestamp": 1780624534726,
+    "request": {
+      "id": "1780624534716",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  username = \"whosua\",\n  \"password\" = \"mypassword\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "196",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:55:34 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting property name enclosed in double quotes: line 2 column 3 (char 4)</p>\n",
+      "time": 7,
+      "size": 196,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624539544",
+    "timestamp": 1780624539544,
+    "request": {
+      "id": "1780624539538",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  username = \"whosua\",\n  \"password\" = mypassword\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "196",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:55:39 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting property name enclosed in double quotes: line 2 column 3 (char 4)</p>\n",
+      "time": 4,
+      "size": 196,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624542239",
+    "timestamp": 1780624542239,
+    "request": {
+      "id": "1780624542231",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": ""
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "162",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:55:42 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)</p>\n",
+      "time": 5,
+      "size": 162,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624642310",
+    "timestamp": 1780624642310,
+    "request": {
+      "id": "1780624642301",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\",\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "192",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:57:22 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Illegal trailing comma before end of object: line 2 column 23 (char 24)</p>\n",
+      "time": 7,
+      "size": 192,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624646118",
+    "timestamp": 1780624646118,
+    "request": {
+      "id": "1780624646111",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "54",
+        "content-type": "application/json",
+        "date": "Fri, 05 Jun 2026 01:57:26 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "{\n  \"message\": \"Must provide username and password\"\n}\n",
+      "time": 5,
+      "size": 54,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624657541",
+    "timestamp": 1780624657541,
+    "request": {
+      "id": "1780624657534",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \"mypassword\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:57:37 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 5,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624712047",
+    "timestamp": 1780624712047,
+    "request": {
+      "id": "1780624712038",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \"pass123word\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:32 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 6,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624727957",
+    "timestamp": 1780624727957,
+    "request": {
+      "id": "1780624727946",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \"&#39;\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:47 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 9,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624737262",
+    "timestamp": 1780624737262,
+    "request": {
+      "id": "1780624737253",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:57 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 6,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624738649",
+    "timestamp": 1780624738649,
+    "request": {
+      "id": "1780624738641",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:58 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 5,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624738830",
+    "timestamp": 1780624738830,
+    "request": {
+      "id": "1780624738822",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:58 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 6,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624738994",
+    "timestamp": 1780624738994,
+    "request": {
+      "id": "1780624738987",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:58 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 5,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624739161",
+    "timestamp": 1780624739161,
+    "request": {
+      "id": "1780624739153",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:59 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 4,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624739311",
+    "timestamp": 1780624739311,
+    "request": {
+      "id": "1780624739303",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:59 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 5,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624739467",
+    "timestamp": 1780624739467,
+    "request": {
+      "id": "1780624739458",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \"password\": \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 01:58:59 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 6,
+      "size": 179,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624743065",
+    "timestamp": 1780624743065,
+    "request": {
+      "id": "1780624743059",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "54",
+        "content-type": "application/json",
+        "date": "Fri, 05 Jun 2026 01:59:03 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "{\n  \"message\": \"Must provide username and password\"\n}\n",
+      "time": 4,
+      "size": 54,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624820231",
+    "timestamp": 1780624820231,
+    "request": {
+      "id": "1780624820221",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "54",
+        "content-type": "application/json",
+        "date": "Fri, 05 Jun 2026 02:00:20 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "{\n  \"message\": \"Must provide username and password\"\n}\n",
+      "time": 6,
+      "size": 54,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624829356",
+    "timestamp": 1780624829356,
+    "request": {
+      "id": "1780624829348",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\",\n  \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "192",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 02:00:29 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Illegal trailing comma before end of object: line 2 column 23 (char 24)</p>\n",
+      "time": 5,
+      "size": 192,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624832565",
+    "timestamp": 1780624832565,
+    "request": {
+      "id": "1780624832558",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "54",
+        "content-type": "application/json",
+        "date": "Fri, 05 Jun 2026 02:00:32 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "{\n  \"message\": \"Must provide username and password\"\n}\n",
+      "time": 5,
+      "size": 54,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1780624837582",
+    "timestamp": 1780624837582,
+    "request": {
+      "id": "1780624837554",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/register",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"whosua\"\n  password: \n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "BAD REQUEST",
+      "headers": {
+        "connection": "close",
+        "content-length": "179",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 05 Jun 2026 02:00:37 GMT",
+        "server": "Werkzeug/3.1.5 Python/3.14.5"
+      },
+      "body": "<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Failed to decode JSON object: Expecting &#39;,&#39; delimiter: line 3 column 3 (char 27)</p>\n",
+      "time": 7,
+      "size": 179,
+      "cookies": []
+    }
+  }
+]

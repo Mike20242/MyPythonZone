@@ -1,1 +1,0 @@
-The app.py is basically all exercises (including mini-project) shoved together in one.
